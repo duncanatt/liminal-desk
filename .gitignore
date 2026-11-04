@@ -1,0 +1,14 @@
+# Editor files
+*.code-workspace
+*.vscode
+
+# Python files
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+venv/
+
+# UI preference files
+.ui-preferences.json
+.ui-preferences.json.tmp

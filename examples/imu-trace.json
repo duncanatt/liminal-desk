@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "type": "send",
+      "payload": {
+        "sensor_name": "main_imu",
+        "sensor_type": "imu",
+        "imu_type": "MPU6500",
+        "timestamp": 1793770000000,
+        "device_id": "esp32-001",
+        "accelerometer": {
+          "x": 0.196,
+          "y": -0.412,
+          "z": 9.806,
+          "unit": "g"
+        },
+        "gyroscope": {
+          "x": 0.512,
+          "y": -0.128,
+          "z": 9.124,
+          "unit": "°/s"
+        },
+        "temperature": 26.4,
+        "temperature_unit": "°C"
+      }
+    },
+    {
+      "type": "delay",
+      "duration_ms": 1000
+    },
+    {
+      "type": "send",
+      "payload": {
+        "sensor_name": "main_imu",
+        "sensor_type": "imu",
+        "imu_type": "MPU6500",
+        "timestamp": 1793770000000,
+        "device_id": "esp32-001",
+        "accelerometer": {
+          "x": 2.0,
+          "y": 1.0,
+          "z": 9.806,
+          "unit": "g"
+        },
+        "gyroscope": {
+          "x": 0.512,
+          "y": -0.128,
+          "z": 9.124,
+          "unit": "°/s"
+        },
+        "temperature": 26.4,
+        "temperature_unit": "°C"
+      }
+    }
+  ]
+}

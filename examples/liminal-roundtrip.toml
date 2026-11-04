@@ -1,0 +1,34 @@
+# Optional standalone Liminal configuration for testing Liminal Desk.
+# Start a local MQTT broker separately. In Desk, start the TCP listener on
+# 127.0.0.1:10000 and connect/subscribe to MQTT using liminal/#.
+# This forwards input unchanged; it does not calculate IMU properties.
+
+[inputs.desk_tcp]
+type = "tcp_input"
+output = "desk_tcp_data"
+channel = { type = "broadcast", capacity = 256 }
+parameters = { mode = "server", host = "127.0.0.1", port = 9999, reconnect = true, reconnect_interval_ms = 1000 }
+
+[inputs.desk_mqtt]
+type = "mqtt_sub"
+output = "desk_mqtt_data"
+channel = { type = "broadcast", capacity = 256 }
+parameters = { broker_url = "mqtt://127.0.0.1:1883", topics = ["liminal/sensors/esp32-001/imu"], client_id = "liminal_desk_example_input", qos = 0, clean_session = true }
+
+[pipelines.default_pipeline]
+description = "Liminal Desk send/receive demonstration"
+[pipelines.default_pipeline.stages]
+
+[outputs.desk_tcp_output]
+type = "tcp_output"
+inputs = ["desk_tcp_data", "desk_mqtt_data"]
+parameters = { mode = "client", host = "127.0.0.1", port = 10000, reconnect = true, reconnect_interval_ms = 1000 }
+
+[outputs.desk_mqtt_output]
+type = "mqtt_pub"
+inputs = ["desk_tcp_data", "desk_mqtt_data"]
+parameters = { broker_url = "mqtt://127.0.0.1:1883", client_id = "liminal_desk_example_output", default_topic = "liminal/desk/output", qos = 0, retain = false, clean_session = true }
+
+[outputs.desk_console]
+type = "console"
+inputs = ["desk_tcp_data", "desk_mqtt_data"]

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "type": "send",
+      "payload": {
+        "test": "first",
+        "value": 42
+      }
+    },
+    {
+      "type": "delay",
+      "duration_ms": 1000
+    },
+    {
+      "type": "send",
+      "payload": {
+        "test": "second",
+        "value": 43
+      }
+    }
+  ]
+}
