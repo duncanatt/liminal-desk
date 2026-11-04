@@ -63,7 +63,7 @@ The Finder launcher opens Terminal while the application runs. Close the applica
 
 ## Quick start: a complete round trip
 
-The included [round-trip configuration](examples/liminal-roundtrip.toml) forwards incoming messages unchanged to both a TCP output and an MQTT output. It is a standalone example; it does not calculate IMU properties or modify an existing Liminal configuration.
+Liminal Desk includes an optional configuration example at [`examples/liminal-roundtrip.toml`](examples/liminal-roundtrip.toml), inside this repository. This example was added for Desk testing; it is not a file supplied by the Liminal repository. It forwards incoming messages unchanged to both a TCP output and an MQTT output. It does not calculate IMU properties or modify your existing Liminal configuration. You can instead use your own configuration, adjusting the addresses, channels, and topics accordingly.
 
 Its connections are:
 
@@ -84,7 +84,7 @@ Its connections are:
    liminal --config examples/liminal-roundtrip.toml
    ```
 
-   If `liminal` is not on your PATH, replace it with the path to your Liminal executable. The configuration path is relative to your current directory.
+   If `liminal` is not on your PATH, replace it with the path to your Liminal executable. Run this command from the **Liminal Desk** directory, where the example resides. If running from the Liminal directory or elsewhere, pass the full path to `liminal-desk/examples/liminal-roundtrip.toml` instead. There is no requirement to copy this file into Liminal.
 
 5. In Desk's **TCP** tab, connect the sender to `127.0.0.1:9999`. In **Message** mode, click **Send** with the default payload:
 
